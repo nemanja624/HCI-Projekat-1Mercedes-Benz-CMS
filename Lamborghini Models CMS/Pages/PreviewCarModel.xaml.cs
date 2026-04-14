@@ -1,4 +1,5 @@
-﻿using Mercedes_Models_CMS.Models;
+﻿using Mercedes_Models_CMS.Helpers;
+using Mercedes_Models_CMS.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,7 +29,8 @@ namespace Mercedes_Models_CMS.Pages
             HorsePower_TextBlock.Text = model.HorsePower.ToString();
             try
             {
-                BitmapImage bitmap = new BitmapImage(new Uri(model.ImagePath, UriKind.RelativeOrAbsolute));
+                string? resolvedImagePath = ImagePathResolver.ResolveForDisplay(model.ImagePath);
+                BitmapImage bitmap = new BitmapImage(new Uri(resolvedImagePath ?? model.ImagePath, UriKind.RelativeOrAbsolute));
                 ModelImage.Source = bitmap;
             }
             catch (Exception ex)

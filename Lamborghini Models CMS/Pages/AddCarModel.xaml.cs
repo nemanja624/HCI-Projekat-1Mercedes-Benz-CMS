@@ -55,8 +55,7 @@ namespace Mercedes_Models_CMS.Pages
             HoursePower_TextBox.Text = model.HorsePower.ToString();
             try
             {
-                BitmapImage bitmap = new BitmapImage(new Uri(model.ImagePath, UriKind.RelativeOrAbsolute));
-                ModelImage.Source = bitmap;
+                TryLoadModelImage(model.ImagePath);
             }
             catch (Exception ex)
             {
@@ -242,41 +241,28 @@ namespace Mercedes_Models_CMS.Pages
             }
         }
 
+        private void TryLoadModelImage(string? imagePath)
+        {
+            string? resolvedPath = ImagePathResolver.ResolveForDisplay(imagePath);
+            if (string.IsNullOrWhiteSpace(resolvedPath))
+            {
+                return;
+            }
+
+            BitmapImage bitmap = new BitmapImage(new Uri(resolvedPath, UriKind.RelativeOrAbsolute));
+            ModelImage.Source = bitmap;
+        }
+
         private string? ResolveImagePathForSave()
         {
             if (!string.IsNullOrWhiteSpace(_selectedImagePath) && File.Exists(_selectedImagePath))
             {
-                string imagesDirectory = System.IO.Path.GetFullPath("../../../Images");
-                Directory.CreateDirectory(imagesDirectory);
-
-                string extension = System.IO.Path.GetExtension(_selectedImagePath);
-                string baseName = ModelName_TextBox.Text.Trim();
-                foreach (char invalid in System.IO.Path.GetInvalidFileNameChars())
-                {
-                    baseName = baseName.Replace(invalid, '_');
-                }
-
-                if (string.IsNullOrWhiteSpace(baseName))
-                {
-                    baseName = "model";
-                }
-
-                string fileName = $"{baseName}-{DateTime.Now:yyyyMMddHHmmssfff}{extension}";
-                string destinationPath = System.IO.Path.Combine(imagesDirectory, fileName);
-                File.Copy(_selectedImagePath, destinationPath, true);
-
-                return destinationPath;
+                return ImagePathResolver.SaveImageToProject(_selectedImagePath, ModelName_TextBox.Text.Trim());
             }
 
-            if (_editMode && Model != null && !string.IsNullOrWhiteSpace(Model.ImagePath) && Model.ImagePath.StartsWith("/Images/"))
+            if (_editMode && Model != null && !string.IsNullOrWhiteSpace(Model.ImagePath))
             {
-                return Model.ImagePath;
-            }
-
-            string? currentImagePath = ModelImage.Source?.ToString();
-            if (!string.IsNullOrWhiteSpace(currentImagePath) && currentImagePath.StartsWith("/Images/"))
-            {
-                return currentImagePath;
+                return ImagePathResolver.ResolveForDisplay(Model.ImagePath);
             }
 
             return null;

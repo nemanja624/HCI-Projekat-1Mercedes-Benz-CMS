@@ -40,7 +40,29 @@ namespace Mercedes_Models_CMS.Pages
             this.ContentRendered += OnLoad;
             CarModels = _serializer.DeSerializeObject<ObservableCollection<CarModel>>(CarModelsFilePath)
                         ?? new ObservableCollection<CarModel>();
+            NormalizeImagePaths();
             DataContext = this;
+        }
+
+        private void NormalizeImagePaths()
+        {
+            bool hasChanges = false;
+
+            foreach (var model in CarModels)
+            {
+                string? resolvedPath = ImagePathResolver.ResolveForDisplay(model.ImagePath);
+                if (!string.IsNullOrWhiteSpace(resolvedPath) &&
+                    !string.Equals(model.ImagePath, resolvedPath, StringComparison.OrdinalIgnoreCase))
+                {
+                    model.ImagePath = resolvedPath;
+                    hasChanges = true;
+                }
+            }
+
+            if (hasChanges)
+            {
+                PersistCarModels();
+            }
         }
 
         public void PersistCarModels()
