@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCarModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CarModel>
+    <Name>S Class</Name>
+    <ImagePath>C:\Users\neman\source\repos\PZ1_IUIS\Lamborghini Models CMS\Lamborghini Models CMS\Images\S Class-20260414141805661.png</ImagePath>
+    <RtfFilePath>../../../Data/RTFs/S Class.rtf</RtfFilePath>
+    <DateAdded>2026-04-14T14:18:05.6652902+02:00</DateAdded>
+    <HorsePower>442</HorsePower>
+    <IsSelected>false</IsSelected>
+  </CarModel>
+  <CarModel>
+    <Name>AMG GT</Name>
+    <ImagePath>C:\Users\neman\source\repos\PZ1_IUIS\Lamborghini Models CMS\Lamborghini Models CMS\Images\AMG GT-20260414142157387.png</ImagePath>
+    <RtfFilePath>../../../Data/RTFs/AMG GT.rtf</RtfFilePath>
+    <DateAdded>2026-04-14T14:21:57.3947419+02:00</DateAdded>
+    <HorsePower>831</HorsePower>
+    <IsSelected>false</IsSelected>
+  </CarModel>
+  <CarModel>
+    <Name>G Class</Name>
+    <ImagePath>C:\Users\neman\source\repos\PZ1_IUIS\Lamborghini Models CMS\Lamborghini Models CMS\Images\G Class-20260414142404642.png</ImagePath>
+    <RtfFilePath>../../../Data/RTFs/G Class.rtf</RtfFilePath>
+    <DateAdded>2026-04-14T14:24:04.6486824+02:00</DateAdded>
+    <HorsePower>550</HorsePower>
+    <IsSelected>false</IsSelected>
+  </CarModel>
+  <CarModel>
+    <Name>AAASADDAS</Name>
+    <ImagePath>C:\Users\neman\source\repos\PZ1_IUIS\Lamborghini Models CMS\Lamborghini Models CMS\Images\AAASADDAS-20260414154729138.png</ImagePath>
+    <RtfFilePath>../../../Data/RTFs\AAASADDAS.rtf</RtfFilePath>
+    <DateAdded>2026-04-14T15:47:29.1405106+02:00</DateAdded>
+    <HorsePower>222</HorsePower>
+    <IsSelected>false</IsSelected>
+  </CarModel>
+</ArrayOfCarModel>
