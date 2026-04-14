@@ -32,4 +32,12 @@
     <HorsePower>222</HorsePower>
     <IsSelected>false</IsSelected>
   </CarModel>
+  <CarModel>
+    <Name>asd</Name>
+    <ImagePath>C:\Users\Nemanja\Desktop\provera HCI projekat\2\Lamborghini Models CMS\Images\asd-20260414164110486.jpg</ImagePath>
+    <RtfFilePath>../../../Data/RTFs\asd.rtf</RtfFilePath>
+    <DateAdded>2026-04-14T16:41:10.5102001+02:00</DateAdded>
+    <HorsePower>123</HorsePower>
+    <IsSelected>false</IsSelected>
+  </CarModel>
 </ArrayOfCarModel>
